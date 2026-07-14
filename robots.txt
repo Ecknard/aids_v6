@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://aids-website-lyart.vercel.app/sitemap.xml

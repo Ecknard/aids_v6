@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Alliance Internationale pour le Développement Social — favoriser l'amélioration des conditions de vie des populations démunies en France et partout dans le monde." />
+  <meta name="keywords" content="AIDS, association, développement social, humanitaire, solidarité, France, Afrique" />
+  <link rel="canonical" href="https://aids-website-lyart.vercel.app/" />
+
+  <meta property="og:title" content="AIDS — Alliance Internationale pour le Développement Social" />
+  <meta property="og:description" content="Favoriser l'amélioration des conditions de vie des populations démunies pour un développement humain durable." />
+  <meta property="og:image" content="https://aids-website-lyart.vercel.app/images/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:url" content="https://aids-website-lyart.vercel.app/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="fr_FR" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="AIDS — Alliance Internationale pour le Développement Social" />
+  <meta name="twitter:description" content="Favoriser l'amélioration des conditions de vie des populations démunies pour un développement humain durable." />
+  <meta name="twitter:image" content="https://aids-website-lyart.vercel.app/images/og-image.jpg" />
+
+  <title>AIDS — Alliance Internationale pour le Développement Social</title>
+  <link rel="icon" type="image/webp" href="images/logo-aids.webp" />
+
+  <!-- Anti-flash thème : applique le thème sauvegardé AVANT le premier rendu -->
+  <script>
+    (function () {
+      var saved = localStorage.getItem('aids-theme');
+      var theme = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+
+  <!-- Polices : préconnexion + chargement non bloquant -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap"
+        media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" /></noscript>
+
+  <link rel="stylesheet" href="css/style.css" />
+  <script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
+
+  <style>
+    /* ===== CORRECTION 1 : Logo agrandi ===== */
+    .nav-logo-img {
+      width: 72px !important;
+      height: 72px !important;
+      object-fit: contain;
+      border-radius: 12px;
+      background: white;
+      padding: 4px;
+      flex-shrink: 0;
+    }
+
+    /* ===== CORRECTION 2 : Titres équilibrés ===== */
+    .hero-title {
+      font-size: clamp(1.3rem, 2.2vw, 1.9rem) !important;
+      font-weight: 800 !important;
+      letter-spacing: -0.8px !important;
+      line-height: 1.2 !important;
+      text-wrap: balance !important;
+    }
+    .section-title {
+      font-size: clamp(1.25rem, 2.2vw, 1.55rem) !important;
+      font-weight: 700 !important;
+      letter-spacing: -0.3px !important;
+      line-height: 1.3 !important;
+    }
+
+    /* ===== CORRECTION 3 : Anti-mots orphelins ===== */
+    .hero-title,
+    .section-title,
+    .don-text .section-title,
+    .contact-info .section-title,
+    .news-card-body h3,
+    .mission-card h3,
+    .rapport-card-body h3,
+    .team-card h3 {
+      text-wrap: balance;
+      overflow-wrap: break-word;
+    }
+
+    /* ===== CORRECTION 5 : Hiérarchie visuelle — RNA & stats hero ===== */
+
+    /* CARTE À PROPOS — numéro RNA */
+    .about-stat-card {
+      padding: 14px 20px 16px !important;
+    }
+
+    /* Le numéro : de géant à "signature élégante" */
+    .about-stat-card .number {
+      font-size: clamp(1.05rem, 2vw, 1.3rem) !important;
+      font-weight: 700 !important;
+      letter-spacing: 0.05em !important;
+      color: var(--blue-bright, #1a5dc8) !important;
+      line-height: 1.2 !important;
+      margin-bottom: 4px !important;
+      font-variant-numeric: tabular-nums !important;
+    }
+
+    /* Le label "Numéro RNA officiel" : repère visuel principal */
+    .about-stat-card .label {
+      font-size: 10px !important;
+      font-weight: 600 !important;
+      letter-spacing: 0.12em !important;
+      text-transform: uppercase !important;
+      color: var(--text-soft, #6b7280) !important;
+      line-height: 1.4 !important;
+    }
+
+    /* ===== CORRECTION 6 : Centrage header Missions = Rapport ===== */
+    #missions .missions-header,
+    #missions .missions-header * {
+      text-align: center !important;
+    }
+    #missions .missions-header {
+      margin-bottom: 48px !important;
+      display: block !important;
+      width: 100% !important;
+    }
+    #missions .missions-header .section-label {
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+    }
+    #missions .missions-header .section-title {
+      display: block !important;
+      text-align: center !important;
+      width: 100% !important;
+    }
+    #missions .missions-header .section-desc {
+      display: block !important;
+      text-align: center !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+      max-width: 600px !important;
+    }
+
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "NGO",
+    "name": "Alliance Internationale pour le Développement Social",
+    "alternateName": "AIDS",
+    "url": "https://aids-website-lyart.vercel.app/",
+    "logo": "https://aids-website-lyart.vercel.app/images/logo-aids.jpg",
+    "image": "https://aids-website-lyart.vercel.app/images/og-image.jpg",
+    "description": "Association loi 1901 œuvrant pour l'amélioration des conditions de vie des populations démunies en France et à l'international.",
+    "foundingDate": "2023-06-12",
+    "email": "alliance.ids92@yahoo.com",
+    "identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "RNA",
+      "value": "W922020314"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "4 allée Jacques Brel",
+      "postalCode": "93160",
+      "addressLocality": "Noisy-le-Grand",
+      "addressCountry": "FR"
+    },
+    "areaServed": ["France", "Allemagne", "États-Unis", "Togo"],
+    "sameAs": []
+  }
+  </script>
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav id="navbar">
+    <a href="#hero" class="nav-logo">
+      <picture>
+        <source srcset="images/logo-aids.webp" type="image/webp" />
+        <img src="images/logo-aids.jpg" alt="Logo AIDS" class="nav-logo-img" width="300" height="300"
+             onerror="this.style.display='none';document.getElementById('nav-icon-fallback').style.display='flex'" />
+      </picture>
+      <div class="nav-logo-icon" id="nav-icon-fallback" style="display:none;">AIDS</div>
+      <div class="nav-logo-text">
+        <span class="name">Alliance Internationale </span>
+        <span class="name">pour le Développement Social </span>
+      </div>
+    </a>
+
+    <ul class="nav-links">
+      <li class="nav-dropdown">
+        <a href="#about" class="nav-dropdown-toggle">
+          À propos
+          <svg width="10" height="6" viewBox="0 0 10 6" fill="none" class="dd-arrow">
+            <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <div class="nav-dropdown-menu">
+          <a href="#about" class="nav-dropdown-item">
+            <span class="nav-dd-icon">🏛️</span>
+            <span><strong>Présentation</strong><small>Qui sommes-nous ?</small></span>
+          </a>
+          <a href="#video" class="nav-dropdown-item">
+            <span class="nav-dd-icon">🎬</span>
+            <span><strong>Présentation vidéo</strong><small>Découvrez notre action</small></span>
+          </a>
+          <a href="#rapport" class="nav-dropdown-item">
+            <span class="nav-dd-icon">📄</span>
+            <span><strong>Rapport d'activité</strong><small>Nos résultats & bilan</small></span>
+          </a>
+        </div>
+      </li>
+      <li><a href="#missions">Missions</a></li>
+      <li><a href="#team">Équipe</a></li>
+      <li><a href="#partners">Partenaires</a></li>
+      <li><a href="#news">Actualités</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#don" class="nav-cta">💙 Faire un don</a></li>
+    </ul>
+
+    <div class="nav-right-controls">
+      <button type="button" id="theme-toggle" class="theme-switch" role="switch" aria-checked="false" aria-label="Activer le mode sombre">
+        <span class="theme-switch-thumb">
+          <svg class="theme-switch-icon icon-sun" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="4.2" fill="currentColor"/>
+            <path d="M12 2.5v2.4M12 19.1v2.4M4.4 4.4l1.7 1.7M17.9 17.9l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.4 19.6l1.7-1.7M17.9 6.1l1.7-1.7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+          <svg class="theme-switch-icon icon-moon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20.5 14.5A8.5 8.5 0 1 1 9.5 3.5a7 7 0 0 0 11 11Z" fill="currentColor"/>
+          </svg>
+        </span>
+      </button>
+
+      <button type="button" class="nav-hamburger" aria-label="Ouvrir le menu de navigation" aria-expanded="false" aria-controls="nav-mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="nav-mobile-menu" id="nav-mobile-menu">
+    <a href="#about">🏛️ Présentation</a>
+    <a href="#video" style="padding-left:28px;font-size:13px;color:var(--text-soft);">🎬 Présentation vidéo</a>
+    <a href="#rapport" style="padding-left:28px;font-size:13px;color:var(--text-soft);">📄 Rapport d'activité</a>
+    <a href="#missions">Missions</a>
+    <a href="#team">Équipe</a>
+    <a href="#partners">Partenaires</a>
+    <a href="#news">Actualités</a>
+    <a href="#contact">Contact</a>
+    <a href="#don" class="nav-cta" style="text-align:center;margin-top:8px;">💙 Faire un don</a>
+  </div>
+
+  <main>
+  <!-- ===== HERO ===== -->
+  <section id="hero">
+    <div class="hero-bg-shape"></div>
+    <div class="hero-bg-shape"></div>
+    <div class="hero-bg-shape"></div>
+    <div class="hero-grid"></div>
+
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="hero-badge">Association loi 1901 · Déclarée 2023</div>
+        <h1 class="hero-title">
+          Ensemble pour un <span>développement</span> humain durable
+        </h1>
+        <p class="hero-description">
+          L'Alliance Internationale pour le Développement Social œuvre pour améliorer les conditions de vie des populations démunies en France et partout dans le monde.
+        </p>
+        <div class="hero-actions">
+          <a href="#missions" class="btn-primary">Découvrir nos missions →</a>
+          <a href="#don" class="btn-outline">💙 Soutenir l'association</a>
+        </div>
+      </div>
+
+      <div class="hero-visual" style="position:relative;">
+        <div class="map-container">
+          <picture>
+            <source srcset="images/impact_monde.webp" type="image/webp" />
+            <img src="images/impact_monde.jpg" alt="Carte du monde illustrant les zones d'action de l'AIDS : France, Allemagne, États-Unis et Togo, reliées par des connexions animées" class="map-img" width="900" height="600" fetchpriority="high" />
+          </picture>
+          <svg class="map-dots" viewBox="0 0 100 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <radialGradient id="dotGlowGold" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#F0B429" stop-opacity=".55"/>
+                <stop offset="100%" stop-color="#F0B429" stop-opacity="0"/>
+              </radialGradient>
+              <radialGradient id="dotGlowBlue" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#4A9FFF" stop-opacity=".55"/>
+                <stop offset="100%" stop-color="#4A9FFF" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+
+            <path class="conn-line" d="M48,28 Q35,10 22,30" fill="none" stroke="rgba(240,180,41,.3)" stroke-width=".3" stroke-dasharray="3,2"/>
+            <path class="conn-line" d="M48,28 Q48,40 47,52" fill="none" stroke="rgba(74,159,255,.3)" stroke-width=".3" stroke-dasharray="3,2" style="animation-delay:.5s"/>
+            <path id="pathLomeWash" class="conn-line" d="M22,30 Q34,40 47,52" fill="none" stroke="rgba(74,159,255,.22)" stroke-width=".3" stroke-dasharray="3,2" style="animation-delay:1s"/>
+
+            <circle r="3.2" fill="url(#dotGlowGold)"><animateMotion dur="4s" repeatCount="indefinite" path="M48,28 Q35,10 22,30"/></circle>
+            <circle r="3.2" fill="url(#dotGlowBlue)"><animateMotion dur="4.5s" begin=".8s" repeatCount="indefinite" path="M48,28 Q48,40 47,52"/></circle>
+            <circle r="3.2" fill="url(#dotGlowBlue)"><animateMotion dur="5s" begin="1.4s" repeatCount="indefinite" path="M22,30 Q34,40 47,52"/></circle>
+
+            <circle class="dot dot-pulse" cx="48" cy="28" r="1.2" fill="#F0B429"/>
+            <circle class="dot dot-ring" cx="48" cy="28" r="1.2" fill="none" stroke="#F0B429" stroke-width=".4"/>
+            <circle class="dot dot-pulse" cx="50" cy="25" r="1" fill="#4A9FFF" style="animation-delay:.4s"/>
+            <circle class="dot dot-ring" cx="50" cy="25" r="1" fill="none" stroke="#4A9FFF" stroke-width=".4" style="animation-delay:.4s"/>
+            <circle class="dot dot-pulse" cx="22" cy="30" r="1.2" fill="#F0B429" style="animation-delay:.8s"/>
+            <circle class="dot dot-ring" cx="22" cy="30" r="1.2" fill="none" stroke="#F0B429" stroke-width=".4" style="animation-delay:.8s"/>
+            <circle class="dot dot-pulse" cx="47" cy="52" r="1" fill="#4A9FFF" style="animation-delay:1.2s"/>
+            <circle class="dot dot-ring" cx="47" cy="52" r="1" fill="none" stroke="#4A9FFF" stroke-width=".4" style="animation-delay:1.2s"/>
+          </svg>
+        </div>
+      </div>
+
+      <style>
+        .map-container {
+          position: relative;
+          border-radius: 20px;
+          overflow: hidden;
+          aspect-ratio: 5 / 3;
+          box-shadow: 0 0 0 1px rgba(74,159,255,.18), 0 24px 60px rgba(10,31,68,.5), inset 0 1px 0 rgba(255,255,255,.08);
+          animation: mapGlow 6s ease-in-out infinite;
+        }
+        @keyframes mapGlow {
+          0%,100% { box-shadow: 0 0 0 1px rgba(74,159,255,.18), 0 24px 60px rgba(10,31,68,.5), 0 0 36px rgba(30,111,217,.08); }
+          50%      { box-shadow: 0 0 0 1px rgba(74,159,255,.32), 0 24px 60px rgba(10,31,68,.6), 0 0 52px rgba(30,111,217,.18); }
+        }
+        .map-img { width:100%;height:100%;display:block;object-fit:cover;object-position:center 42%;filter:saturate(1.12) brightness(1.05) contrast(1.04); }
+        .map-container::after {
+          content:'';
+          position:absolute; inset:0;
+          background: radial-gradient(120% 90% at 50% 15%, rgba(74,159,255,.10), transparent 60%),
+                      linear-gradient(180deg, rgba(10,31,68,0) 60%, rgba(10,31,68,.35) 100%);
+          pointer-events:none;
+        }
+        .map-dots { position:absolute;inset:0;width:100%;height:100%;pointer-events:none; }
+        .dot-pulse { animation: dotPulse 2.4s cubic-bezier(.45,0,.55,1) infinite; }
+        @keyframes dotPulse { 0%,100%{opacity:1;r:1.2;}50%{opacity:.55;r:1.9;} }
+        .dot-ring { animation: dotRing 2.4s cubic-bezier(.2,.6,.4,1) infinite; transform-origin:center; }
+        @keyframes dotRing { 0%{opacity:.7;transform:scale(1);}100%{opacity:0;transform:scale(4.4);} }
+        .conn-line { stroke-dashoffset:20;animation:dashFlow 3.4s linear infinite; }
+        @keyframes dashFlow { to{stroke-dashoffset:-20;} }
+      </style>
+
+    </div>
+  </section>
+
+  <!-- ===== À PROPOS ===== -->
+  <section id="about" style="background:var(--off-white);">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-visual reveal">
+          <div class="about-badge"><span>🏛️ Officiellement reconnue</span></div>
+          <div class="about-img-wrap">
+            <div class="about-img-bg" style="padding:40px;">
+              <picture>
+                <source srcset="images/logo-aids.webp" type="image/webp" />
+                <img src="images/logo-aids.jpg" alt="Logo AIDS" width="300" height="300" loading="lazy"
+                     style="width:70%;height:auto;object-fit:contain;border-radius:8px;"
+                     onerror="this.outerHTML='<span style=font-size:5rem>🌐</span>'" />
+              </picture>
+            </div>
+          </div>
+          <div class="about-stat-card">
+            <div class="number">W922020314</div>
+            <div class="label">Numéro RNA officiel</div>
+          </div>
+        </div>
+
+        <div class="about-content reveal">
+          <div class="section-label">À propos de nous</div>
+          <h2 class="section-title">Une association née d'une vision commune</h2>
+          <p class="section-desc">Fondée le 12 juin 2023 et déclarée à la préfecture des Hauts-de-Seine, l'AIDS rassemble des acteurs engagés de France, d'Afrique et des États-Unis autour d'un objectif commun : permettre aux personnes les plus vulnérables d'accéder à l'éducation et aux compétences essentielles.</p>
+          <div class="about-features">
+            <div class="about-feature">
+              <div class="about-feature-icon">📜</div>
+              <div><h3>Association loi 1901</h3><p>Structure juridique française reconnue, transparente et à but non lucratif. Publiée au Journal Officiel le 20 juin 2023.</p></div>
+            </div>
+            <div class="about-feature">
+              <div class="about-feature-icon">🌍</div>
+              <div><h3>Dimension internationale</h3><p>Membres basés en France, en Allemagne, aux États-Unis et au Togo pour un impact véritablement mondial.</p></div>
+            </div>
+            <div class="about-feature">
+              <div class="about-feature-icon">🎯</div>
+              <div><h3>Gouvernance structurée</h3><p>Bureau constitué d'un Président, d'un Trésorier et d'un Secrétaire Exécutif, avec un conseil d'administration actif.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PRÉSENTATION VIDÉO ===== -->
+  <section id="video" style="background:var(--blue-deep);padding:80px 5%;">
+    <div class="container">
+      <div style="text-align:center;margin-bottom:48px;" class="reveal">
+        <div class="section-label" style="color:var(--blue-light);justify-content:center;">
+        Présentation vidéo
+        </div>
+        <h2 class="section-title" style="color:white;">Découvrez notre association en vidéo</h2>
+        <p class="section-desc" style="color:rgba(255,255,255,.6);margin:0 auto;">Une présentation de nos actions, notre équipe et notre vision pour un développement humain durable.</p>
+      </div>
+      <!--
+        Pour intégrer une vraie vidéo : remplacer le bloc .video-placeholder ci-dessous par un iframe responsive, par exemple :
+        <div class="video-embed">
+          <iframe src="https://www.youtube.com/embed/VOTRE_ID_VIDEO" title="Vidéo de présentation AIDS"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen loading="lazy"></iframe>
+        </div>
+        (ajouter .video-embed{position:relative;padding-bottom:56.25%;height:0;border-radius:20px;overflow:hidden;}
+         .video-embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0;} dans le CSS)
+      -->
+      <div class="reveal" style="max-width:800px;margin:0 auto;">
+        <div class="video-placeholder" style="opacity:.85;">
+          <div class="video-placeholder-inner">
+            <div class="video-play-btn" style="opacity:.6;cursor:default;">🎬</div>
+            <p style="color:rgba(255,255,255,.75);margin-top:20px;font-size:16px;font-weight:600;">Vidéo de présentation à venir</p>
+            <p style="color:rgba(255,255,255,.45);font-size:13px;margin-top:8px;">Notre équipe prépare actuellement ce contenu — revenez bientôt !</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== RAPPORT D'ACTIVITÉ ===== -->
+  <section id="rapport" style="background:var(--off-white);padding:80px 5%;">
+    <div class="container">
+      <div style="text-align:center;margin-bottom:48px;" class="reveal">
+        <div class="section-label" style="justify-content:center;">Transparence & bilan</div>
+        <h2 class="section-title">Rapport d'activité</h2>
+        <p class="section-desc" style="margin:0 auto;">Retrouvez ici nos bilans d'activités, documents officiels et nos avancées sur le terrain.</p>
+      </div>
+      <div class="rapport-grid reveal">
+        <div class="rapport-card">
+          <div class="rapport-card-icon">📋</div>
+          <div class="rapport-card-body">
+            <span class="news-tag" style="background:var(--blue-pale);color:var(--blue-bright);">2024</span>
+            <h3>Statuts de l'association</h3>
+            <p>Statuts mis à jour et signés le 23 janvier 2024 par les membres fondateurs.</p>
+            <a href="docs/statuts.pdf" class="rapport-dl-btn" target="_blank">📥 Télécharger</a>
+          </div>
+        </div>
+        <div class="rapport-card">
+          <div class="rapport-card-icon">📰</div>
+          <div class="rapport-card-body">
+            <span class="news-tag" style="background:var(--blue-pale);color:var(--blue-bright);">2023</span>
+            <h3>Publication Journal Officiel</h3>
+            <p>Annonce n°2111 du 20 juin 2023 — reconnaissance officielle de l'association.</p>
+            <a href="docs/journal-officiel.pdf" class="rapport-dl-btn" target="_blank">📥 Télécharger</a>
+          </div>
+        </div>
+        <div class="rapport-card">
+          <div class="rapport-card-icon">🏦</div>
+          <div class="rapport-card-body">
+            <span class="news-tag" style="background:var(--blue-pale);color:var(--blue-bright);">2024</span>
+            <h3>Procès-verbal AG constitutive</h3>
+            <p>Compte-rendu de l'Assemblée Générale Extraordinaire du 3 février 2024.</p>
+            <a href="docs/proces-verbal.pdf" class="rapport-dl-btn" target="_blank">📥 Télécharger</a>
+          </div>
+        </div>
+        <div class="rapport-card" style="opacity:.7;">
+          <div class="rapport-card-icon">📊</div>
+          <div class="rapport-card-body">
+            <span class="news-tag" style="background:#fff3cd;color:#856404;">À venir</span>
+            <h3>Rapport d'activité annuel 2024</h3>
+            <p>Notre premier rapport d'activité complet est en cours de préparation.</p>
+            <span class="rapport-dl-btn" style="opacity:.5;cursor:not-allowed;pointer-events:none;">🔒 Bientôt disponible</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MISSIONS ===== -->
+
+  
+  <section id="missions" style="background:var(--off-white);padding:80px 5%;">
+    <div class="missions-bg-decor"></div>
+    <div class="container">
+      <div style="text-align:center;margin-bottom:48px;" class="reveal">
+        <div class="section-label" style="justify-content:center;">Ce que nous faisons</div>
+        <h2 class="section-title">Nos axes d'intervention</h2>
+        <p class="section-desc" style="margin:0 auto;">Nous agissons sur plusieurs fronts pour créer un impact durable et mesurable sur les populations les plus vulnérables.</p>
+      </div>
+      <div class="missions-grid">
+        <div class="mission-card reveal"><div class="mission-icon">📚</div><h3>Accès à l'éducation</h3><p>Nous facilitons l'accès à l'éducation des techniques de base — lecture, écriture et calcul — pour les orphelins et personnes isolées socialement.</p></div>
+        <div class="mission-card reveal"><div class="mission-icon">🛠️</div><h3>Compétences pour la vie</h3><p>Développement de compétences pratiques et utiles au quotidien pour favoriser l'autonomie et l'insertion sociale des bénéficiaires.</p></div>
+        <div class="mission-card reveal"><div class="mission-icon">🤝</div><h3>Soutien aux personnes isolées</h3><p>Accompagnement spécifique des personnes isolées socialement pour les reconnecter aux ressources et aux opportunités de leur communauté.</p></div>
+        <div class="mission-card reveal"><div class="mission-icon">🌱</div><h3>Développement humain durable</h3><p>Mise en place de programmes à long terme visant une amélioration structurelle et pérenne des conditions de vie.</p></div>
+        <div class="mission-card reveal"><div class="mission-icon">👶</div><h3>Protection de l'enfance</h3><p>Actions spécifiques pour les orphelins : hébergement, suivi éducatif, et construction d'un environnement protecteur et bienveillant.</p></div>
+        <div class="mission-card reveal"><div class="mission-icon">🌐</div><h3>Action France & Monde</h3><p>Intervention en France et à l'international, avec une présence en Afrique subsaharienne et une diaspora active aux États-Unis.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ÉQUIPE ===== -->
+  <section id="team" style="background:linear-gradient(180deg,var(--off-white) 0%,var(--white) 100%);">
+    <div class="container">
+      <div class="team-header reveal">
+        <div class="section-label">Les visages de l'association</div>
+        <h2 class="section-title">Notre équipe</h2>
+        <p class="section-desc">Une équipe passionnée et multiculturelle, unie par la conviction que chaque être humain mérite dignité et opportunités.</p>
+      </div>
+      <div class="team-grid">
+        <div class="team-card reveal">
+          <div class="team-avatar-placeholder">MK</div>
+          <span class="team-role-badge">Président</span>
+          <h3>MENSAH Kodjo Samuel</h3>
+          <p>Coordinateur général de l'association.</p>
+        </div>
+        <div class="team-card reveal">
+          <div class="team-avatar-placeholder">DK</div>
+          <span class="team-role-badge">Trésorier</span>
+          <h3>DZIWONOU Kisito F.</h3>
+          <p>Responsable de la gestion financière et comptable.</p>
+        </div>
+        <div class="team-card reveal">
+          <div class="team-avatar-placeholder">BO</div>
+          <span class="team-role-badge">Secrétaire Exécutif</span>
+          <h3>BOGUI Omar Steeves K.</h3>
+          <p>Gestion administrative et coordination opérationnelle.</p>
+        </div>
+      </div>
+      <div class="reveal" style="text-align:center;margin-top:48px;">
+        <p style="color:var(--text-soft);margin-bottom:16px;">Vous souhaitez rejoindre notre équipe ou devenir membre ?</p>
+        <a href="#contact" class="btn-primary">Rejoindre l'association</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PARTENAIRES ===== -->
+  <section id="partners" style="background:var(--off-white);padding:80px 5%;overflow:hidden;">
+    <div class="container">
+      <div style="text-align:center;margin-bottom:56px;" class="reveal">
+        <div class="section-label" style="justify-content:center;">Ils nous font confiance</div>
+        <h2 class="section-title">Nos partenaires</h2>
+        <p class="section-desc" style="margin:0 auto;">Nous collaborons avec des institutions publiques, associations et fondations partageant nos valeurs.</p>
+      </div>
+    </div>
+    <div class="partners-track-wrap" tabindex="0" role="region" aria-label="Liste défilante des partenaires de l'association">
+      <div class="partners-track">
+        <div class="partner-logo-card"><div class="partner-logo-inner">🏛️<span>Orléans Mairie</span></div></div>
+        <div class="partner-logo-card"><div class="partner-logo-inner">🥫<span>Banques Alimentaires</span></div></div>
+        <div class="partner-logo-card"><div class="partner-logo-inner">✝️<span>Secours Catholique Caritas</span></div></div>
+        <div class="partner-logo-card"><div class="partner-logo-inner">🌿<span>Centre-Val de Loire</span></div></div>
+        <div class="partner-logo-card"><div class="partner-logo-inner">🤝<span>ANDES Groupe SOS</span></div></div>
+        <div class="partner-logo-card"><div class="partner-logo-inner">👶<span>CAF du Loiret</span></div></div>
+        <div class="partner-logo-card"><div class="partner-logo-inner">🏅<span>Fondation Yves Girouard</span></div></div>
+        <div class="partner-logo-card"><div class="partner-logo-inner">🏢<span>AMPUS</span></div></div>
+        <div class="partner-logo-card"><div class="partner-logo-inner">🎓<span>Université d'Orléans</span></div></div>
+        <div class="partner-logo-card"><div class="partner-logo-inner">🏛️<span>Préfet CVL</span></div></div>
+        <div class="partner-logo-card"><div class="partner-logo-inner">🌍<span>AVEC Région CVL</span></div></div>
+        <div class="partner-logo-card"><div class="partner-logo-inner">⚔️<span>Stratégie Nationale Pauvreté</span></div></div>
+        <div class="partner-logo-card"><div class="partner-logo-inner">⚙️<span>Ingénieurs sans frontières</span></div></div>
+        <!-- Duplicate for seamless loop -->
+        <div class="partner-logo-card" aria-hidden="true"><div class="partner-logo-inner">🏛️<span>Orléans Mairie</span></div></div>
+        <div class="partner-logo-card" aria-hidden="true"><div class="partner-logo-inner">🥫<span>Banques Alimentaires</span></div></div>
+        <div class="partner-logo-card" aria-hidden="true"><div class="partner-logo-inner">✝️<span>Secours Catholique Caritas</span></div></div>
+        <div class="partner-logo-card" aria-hidden="true"><div class="partner-logo-inner">🌿<span>Centre-Val de Loire</span></div></div>
+        <div class="partner-logo-card" aria-hidden="true"><div class="partner-logo-inner">🤝<span>ANDES Groupe SOS</span></div></div>
+        <div class="partner-logo-card" aria-hidden="true"><div class="partner-logo-inner">👶<span>CAF du Loiret</span></div></div>
+        <div class="partner-logo-card" aria-hidden="true"><div class="partner-logo-inner">🏅<span>Fondation Yves Girouard</span></div></div>
+        <div class="partner-logo-card" aria-hidden="true"><div class="partner-logo-inner">🏢<span>AMPUS</span></div></div>
+        <div class="partner-logo-card" aria-hidden="true"><div class="partner-logo-inner">⚙️<span>Ingénieurs sans frontières</span></div></div>
+      </div>
+    </div>
+    <div class="container">
+      <p style="text-align:center;color:var(--text-soft);font-size:13px;margin-top:32px;" class="reveal">
+        Vous souhaitez devenir partenaire ? <a href="#contact" style="color:var(--blue-bright);font-weight:600;">Contactez-nous →</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== ACTUALITÉS ===== -->
+  <section id="news" style="background:var(--blue-deep);padding:100px 5%;position:relative;overflow:hidden;">
+    <div class="news-bg"></div>
+    <div class="container">
+      <div class="news-header reveal">
+        <div class="section-label">Restez informés</div>
+        <h2 class="section-title">Actualités</h2>
+        <p class="section-desc">Suivez nos actions, événements et avancées sur le terrain.</p>
+      </div>
+      <div class="news-grid">
+        <div class="news-card reveal">
+          <div class="news-card-img" style="display:flex;align-items:center;justify-content:center;font-size:4rem;">🏛️</div>
+          <div class="news-card-body">
+            <span class="news-tag">Institutionnel</span>
+            <h3>Publication au Journal Officiel de la République Française</h3>
+            <p>L'association AIDS est officiellement reconnue et publiée au Journal Officiel (annonce n°2111) le 20 juin 2023, confirmant sa reconnaissance légale en France.</p>
+            <div class="news-date">📅 20 juin 2023</div>
+          </div>
+        </div>
+        <div class="news-side">
+          <div class="news-card-small reveal"><div class="news-card-small-icon">📋</div><div><h4>Assemblée Générale Constitutive</h4><p>📅 23 janvier 2024 · Nanterre</p></div></div>
+          <div class="news-card-small reveal"><div class="news-card-small-icon">🏦</div><div><h4>Ouverture du compte bancaire</h4><p>📅 3 février 2024 · Nanterre</p></div></div>
+          <div class="news-card-small reveal"><div class="news-card-small-icon">💙</div><div><h4>Lancement campagne HelloAsso</h4><p>📅 Mai 2026 · En ligne</p></div></div>
+          <div class="news-card-small reveal" style="border:1px dashed rgba(255,255,255,.2);flex-direction:column;text-align:center;padding:24px;gap:0;justify-content:center;align-items:center;">
+            <p style="color:rgba(255,255,255,.5);font-size:13px;margin-bottom:8px;">D'autres actualités arrivent bientôt</p>
+            <a href="#contact" style="color:var(--blue-light);font-size:13px;font-weight:600;">Nous contacter →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAIRE UN DON ===== -->
+  <section id="don">
+    <div class="container">
+      <div class="don-wrap reveal">
+        <div class="don-text">
+          <div class="section-label">Agissez avec nous</div>
+          <h2 class="section-title">Votre don change des vies</h2>
+          <p class="section-desc">Chaque contribution, quelle que soit son montant, nous permet de financer nos programmes éducatifs et d'accompagnement des personnes vulnérables.</p>
+          <br/>
+          <p style="color:rgba(255,255,255,.6);font-size:14px;line-height:1.85;">
+            🔒 Paiement 100% sécurisé via HelloAsso<br/>
+            💸 0% de frais sur vos dons<br/>
+            🎁 Reçu fiscal disponible sur demande<br/>
+            💙 Association loi 1901 · But non lucratif
+          </p>
+          <div style="margin-top:28px;">
+            <a href="https://www.helloasso.com/associations/aids/formulaires/1"
+               target="_blank" rel="noopener" class="btn-primary"
+               style="display:inline-flex;">
+              💙 Ouvrir la page de don →
+            </a>
+          </div>
+        </div>
+        <div class="don-widget-wrap">
+          <iframe
+            id="haWidget"
+            allowtransparency="true"
+            scrolling="auto"
+            src="https://www.helloasso.com/associations/aids/formulaires/1/widget"
+            style="width:100%;height:700px;border:none;border-radius:16px;background:white;"
+            title="Formulaire de don HelloAsso - AIDS"
+            loading="lazy">
+          </iframe>
+          <p style="text-align:center;font-size:11px;color:rgba(255,255,255,.35);margin-top:8px;">
+            Propulsé par HelloAsso — 0% de frais prélevés sur vos dons
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section id="contact" style="background:var(--off-white);">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info reveal">
+          <div class="section-label">Nous écrire</div>
+          <h2 class="section-title">Contactez-nous</h2>
+          <p>Une question, une idée de partenariat, ou vous souhaitez simplement en savoir plus sur nos actions ? Notre équipe est à votre écoute.</p>
+          <div class="contact-detail">
+            <div class="contact-detail-icon">📍</div>
+            <div><h3>Siège social</h3><p>4 allée Jacques Brel<br/>93160 Noisy-le-Grand, France</p></div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon">✉️</div>
+            <div><h3>Email</h3><p><a href="mailto:alliance.ids92@yahoo.com" style="color:var(--blue-bright);">alliance.ids92@yahoo.com</a></p></div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon">🏛️</div>
+            <div><h3>Numéro RNA</h3><p>W922020314</p></div>
+          </div>
+        </div>
+        <div class="reveal">
+          <form action="https://formspree.io/f/mpqbjvok" method="POST" class="contact-form">
+            <input type="hidden" name="_subject" value="Nouveau message — Site AIDS" />
+            <div class="form-row">
+              <div class="form-group"><label for="fname">Prénom</label><input type="text" id="fname" name="fname" placeholder="Jean" required /></div>
+              <div class="form-group"><label for="lname">Nom</label><input type="text" id="lname" name="lname" placeholder="Dupont" required /></div>
+            </div>
+            <div class="form-group"><label for="email">Email</label><input type="email" id="email" name="email" placeholder="jean@exemple.fr" required /></div>
+            <div class="form-group">
+              <label for="subject">Objet</label>
+              <select id="subject" name="subject">
+                <option value="">Sélectionner un objet...</option>
+                <option>Devenir membre</option>
+                <option>Partenariat</option>
+                <option>Don / Financement</option>
+                <option>Bénévolat</option>
+                <option>Information générale</option>
+                <option>Autre</option>
+              </select>
+            </div>
+            <div class="form-group"><label for="message">Message</label><textarea id="message" name="message" rows="5" placeholder="Votre message..." required></textarea></div>
+            <div class="form-group form-consent">
+              <label class="consent-label">
+                <input type="checkbox" id="consent" name="consent" required />
+                <span>J'accepte que mes données soient utilisées pour traiter ma demande, conformément à la <a href="politique-confidentialite.html" target="_blank">politique de confidentialité</a>.</span>
+              </label>
+            </div>
+            <button type="submit" class="btn-submit">📨 Envoyer le message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+          <picture>
+            <source srcset="images/logo-aids.webp" type="image/webp" />
+            <img src="images/logo-aids.jpg" alt="Logo AIDS" width="300" height="300" loading="lazy"
+                 style="width:42px;height:42px;border-radius:8px;object-fit:contain;background:white;padding:2px;"
+                 onerror="this.style.display='none'" />
+          </picture>
+          <div class="nav-logo-text"><span class="name">Alliance Internationale</span><span class="tagline">pour le Développement Social</span></div>
+        </div>
+        <p>Favoriser l'amélioration des conditions de vie des populations démunies en France et partout dans le monde pour un développement humain durable.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="#about">À propos</a></li>
+          <li><a href="#video">Présentation vidéo</a></li>
+          <li><a href="#rapport">Rapport d'activité</a></li>
+          <li><a href="#missions">Nos missions</a></li>
+          <li><a href="#team">Notre équipe</a></li>
+          <li><a href="#partners">Partenaires</a></li>
+          <li><a href="#news">Actualités</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Association</h4>
+        <ul>
+          <li><a href="#don">Faire un don</a></li>
+          <li><a href="#contact">Devenir membre</a></li>
+          <li><a href="#contact">Partenariat</a></li>
+          <li><a href="#contact">Bénévolat</a></li>
+          <li><a href="mailto:alliance.ids92@yahoo.com">Nous écrire</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Légal</h4>
+        <ul>
+          <li><a href="docs/statuts.pdf" target="_blank" rel="noopener">Statuts de l'association</a></li>
+          <li><a href="mentions-legales.html">Mentions légales</a></li>
+          <li><a href="politique-confidentialite.html">Politique de confidentialité</a></li>
+        </ul>
+        <div style="margin-top:20px;padding:12px 16px;background:rgba(255,255,255,.06);border-radius:8px;font-size:12px;line-height:1.6;">
+          <strong style="color:white;">RNA :</strong> W922020314<br/>
+          <strong style="color:white;">Déclaration :</strong> 12 juin 2023<br/>
+          <strong style="color:white;">JO :</strong> 20 juin 2023
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024–2026 Alliance Internationale pour le Développement Social — Association loi 1901</p>
+      <p>Conçu avec ❤️ pour l'impact social · <a href="#hero">Retour en haut ↑</a></p>
+    </div>
+  </footer>
+
+  <!-- ===== CHATBOT NOVA ===== -->
+  <div role="complementary" aria-label="Assistant virtuel Nova">
+    <button type="button" id="nova-launcher" class="chatbot-launcher" aria-expanded="false" aria-controls="nova-window" aria-label="Ouvrir l'assistant Nova">
+      <span class="chatbot-launcher-icon-wrap">
+        <svg class="chat-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v8A2.5 2.5 0 0 1 17.5 16H10l-4.5 4v-4H6.5A2.5 2.5 0 0 1 4 13.5v-8Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+          <circle cx="9" cy="9.5" r="1" fill="currentColor"/>
+          <circle cx="12.5" cy="9.5" r="1" fill="currentColor"/>
+          <circle cx="16" cy="9.5" r="1" fill="currentColor"/>
+        </svg>
+        <svg class="close-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </span>
+      <span class="chatbot-launcher-label">Nova</span>
+    </button>
+
+    <section id="nova-window" class="chatbot-window" role="dialog" aria-label="Assistant Nova" aria-hidden="true" inert>
+      <div class="chatbot-header">
+        <div class="nova-avatar">N</div>
+        <div class="nova-info">
+          <div class="nova-name">Nova</div>
+          <div class="nova-status">Assistant AIDS</div>
+        </div>
+      </div>
+      <div class="chatbot-messages" id="nova-messages" role="log" aria-live="polite"></div>
+      <form class="chatbot-form" id="nova-form">
+        <label for="nova-input" class="visually-hidden">Votre message à Nova</label>
+        <input type="text" id="nova-input" name="nova-input" placeholder="Écrivez votre question..." autocomplete="off" />
+        <button type="submit" aria-label="Envoyer">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 12l16-7-6 7 6 7-16-7Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" fill="none"/>
+          </svg>
+        </button>
+      </form>
+    </section>
+  </div>
+
+  <script src="js/theme.js"></script>
+  <script src="js/nova-knowledge.js"></script>
+  <script src="js/nova-chatbot.js"></script>
+  <script src="js/scripts.js"></script>
+</body>
+</html>

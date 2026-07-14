@@ -1,0 +1,24 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "api/nova.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "**/*",
+      "use": "@vercel/static",
+      "config": { "excludeFiles": "api/**" }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/nova",
+      "dest": "/api/nova.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
+    }
+  ]
+}
